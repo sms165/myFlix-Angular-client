@@ -22,7 +22,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 @NgModule({
   declarations: [
     AppComponent, 
-    UserRegistrationFormComponent, LoginFormComponent
+    UserRegistrationFormComponent, 
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
