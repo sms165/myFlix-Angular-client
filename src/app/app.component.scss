@@ -1,5 +1,6 @@
 .main-page{
-    background-color: white;
+    color:white;
+    background-color: #0d1a25;
     position: fixed;
         top: 50%;
         left: 50%;
@@ -9,7 +10,12 @@
 }
 
 button{
-    margin: auto;
+   
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+    margin-left: 4vw;
+    margin-right: 4vw !important;
+   
 }
 
 .bg{
