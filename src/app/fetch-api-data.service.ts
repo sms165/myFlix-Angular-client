@@ -78,7 +78,7 @@ export class FetchApiDataService {
 
   // API call to genre endpoint
 // Get Genre
-getGenre(): Observable<any> {
+getGenresList(): Observable<any> {
   
   return this.http
     .get( apiUrl + 'genre', {
@@ -94,8 +94,8 @@ getGenre(): Observable<any> {
 
   // API call to user data endpoint
   // API call to get favortie movies of a user endpoint
-  getUser(username: any): Observable<any> {
- 
+  getUser(): Observable<any> {
+    const username = localStorage.getItem('user');
     return this.http
       .get(apiUrl + 'users/' + username, {
         headers: new HttpHeaders({
