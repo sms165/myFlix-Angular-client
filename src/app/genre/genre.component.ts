@@ -11,13 +11,11 @@ export class GenreComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
-      name: string,
-      description: string,
+      genresArray: any[];
     }
   ) { }
 
   ngOnInit(): void {
   }
 
-  
 }
