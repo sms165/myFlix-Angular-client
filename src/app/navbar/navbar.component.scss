@@ -1,9 +1,10 @@
 $backgroundColor: #f8f9fa;
-$cardColor: #fff;
-$textColor: #343a40;
+$cardColor:  #122535;;
+$textColor: #ffffff;
 $boxShadowColor: #e9ecef;
 
 .nav-bar {
+    color: $textColor;
     border-bottom: $boxShadowColor;
     background-color: $cardColor;
 }

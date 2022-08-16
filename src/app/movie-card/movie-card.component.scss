@@ -1,3 +1,41 @@
 .movieImage{
-    height:80vh
+    height:55vh
+}
+
+
+.movie-view {
+    
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // justify-content: center;
+    // padding: 50px 0;
+    background-color: #0d1a25;
+}
+
+
+.mat-card {
+    color: #ffffff;
+  
+    // display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    // box-shadow: 10px 5px 5px green;
+    background-color: #122535;
+    margin: 1vw;
+    
+}
+
+b{
+    color: #ffffff; 
+}
+
+button{
+    color: #a8a4a4; 
+}
+
+button:hover{
+    color: #F90606;
 }

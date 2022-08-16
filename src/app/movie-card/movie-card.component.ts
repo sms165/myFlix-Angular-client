@@ -5,8 +5,10 @@ import { GenreComponent } from '../genre/genre.component';
 import { SynopsisComponent } from '../synopsis/synopsis.component';
 import { DirectorComponent } from '../director/director.component';
 import { TrailerComponent } from '../trailer/trailer.component';
+import { ActorsComponent } from '../actors/actors.component';
 
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -17,9 +19,11 @@ import { MatDialog } from '@angular/material/dialog';
 export class MovieCardComponent {
   movies: any[] = [];
   genres: any[] = [];
+  actors: any[] = [];
+  favoriteMovies: any[] = [];
 
 
-  constructor(public fetchApiData: FetchApiDataService, public dialog: MatDialog) { }
+  constructor(public fetchApiData: FetchApiDataService,  public snackBar: MatSnackBar, public dialog: MatDialog) { }
 
 ngOnInit(): void {
   this.getMovies();
@@ -35,21 +39,53 @@ getMovies(): void {
   }
   
   getGenres(): void {
-    this.fetchApiData.getGenresList().subscribe((resp: any) => {
+    this.fetchApiData.getGenres().subscribe((resp: any) => {
       this.genres = resp;
       return this.genres;
     });
   }
 
-  openGenreDialog(ids: string[]): void {
-    let genresDataArray: any[] = [];
-    ids.forEach((genre) => {
-      let genresObj = this.genres.find((g) => genre === g._id);
-      genresDataArray.push(genresObj);
-    });
+  // openGenreDialog(ids: string[]): void {
+  //   let genresDataArray: any[] = [];
+  //   ids.forEach((genre) => {
+  //     let genresObj = this.genres.find((g) => genre === g._id);
+  //     genresDataArray.push(genresObj);
+  //   });
+  //   this.dialog.open(GenreComponent, {
+  //     data: {
+  //       genresArray: genresDataArray,
+  //     },
+  //     width: '500px',
+  //   });
+  // }
+
+  openGenreDialog(name:string, description:string ): void {
     this.dialog.open(GenreComponent, {
       data: {
-        genresArray: genresDataArray,
+        name: name,
+        description: description,
+        
+
+      },
+      width: '500px',
+    });
+  }
+
+
+  getActors(): void {
+    this.fetchApiData.getActors().subscribe((resp: any) => {
+      this.actors = resp;
+      return this.actors;
+    });
+  }
+
+  openActorDialog(name:string, bio:string, portrait:string): void {
+    this.dialog.open(ActorsComponent, {
+      data: {
+        name: name,
+        bio: bio,
+        portrait: portrait
+
       },
       width: '500px',
     });
@@ -86,7 +122,24 @@ getMovies(): void {
     });
   }
 
- 
+  isFav(id: any): boolean {
+    return this.favoriteMovies.includes(id);
+  }
 
+  addToFavoriteMovies(id: string): void {
+    console.log(id);
+    this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    })
+  }
+
+  removeFromFavoriteMovies(id: string): void {
+    console.log(id);
+    this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    })
+  }
   
 }

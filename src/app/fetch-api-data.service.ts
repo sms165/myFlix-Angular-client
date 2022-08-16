@@ -76,9 +76,26 @@ export class FetchApiDataService {
       );
   }
 
+
   // API call to genre endpoint
 // Get Genre
-getGenresList(): Observable<any> {
+getActors(): Observable<any> {
+  
+  return this.http
+    .get( apiUrl + 'actor', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      })
+    })
+    .pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+}
+
+  // API call to genre endpoint
+// Get Genre
+getGenres(): Observable<any> {
   
   return this.http
     .get( apiUrl + 'genre', {
@@ -111,9 +128,10 @@ getGenresList(): Observable<any> {
 
   // API call to add a favorite movie to user endpoint
   addFavoriteMovie( movieId: any): Observable<any> {
-  
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     return this.http
-      .post(apiUrl + `users/${username}/favorites/${movieId}`,{},   {
+      .post(apiUrl + `users/${username}/${movieId}`,{},   {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,
         })
@@ -126,7 +144,7 @@ getGenresList(): Observable<any> {
 
   // API call to delete a movie from the users favorites list
   removeFavoriteMovie(movieID: any): Observable<any> {
-  
+    const username = localStorage.getItem('user');
     return this.http
       .delete(apiUrl + `users/${username}/movies/${movieID}`, {
         headers: new HttpHeaders({

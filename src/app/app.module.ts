@@ -28,6 +28,10 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SynopsisComponent } from './synopsis/synopsis.component';
 import { DirectorComponent } from './director/director.component';
 import { TrailerComponent } from './trailer/trailer.component';
+import { ActorsComponent } from './actors/actors.component';
+
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -42,7 +46,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent, 
     UserRegistrationFormComponent, 
-    LoginFormComponent, MovieCardComponent, WelcomePageComponent, ProfilePageComponent, NavbarComponent, GenreComponent, EditProfileComponent,  SynopsisComponent, DirectorComponent, TrailerComponent
+    LoginFormComponent, MovieCardComponent, WelcomePageComponent, ProfilePageComponent, NavbarComponent, GenreComponent, EditProfileComponent,  SynopsisComponent, DirectorComponent, TrailerComponent, ActorsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -58,6 +62,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSnackBarModule,
     MatIconModule,
+    // BrowserAnimationsModule,
+    CarouselModule,
 
   ],
   providers: [],
