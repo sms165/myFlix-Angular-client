@@ -2,14 +2,16 @@
     <mat-card-title class="synopsis-dialog-title">{{ data.name }}</mat-card-title>
     <br />
     <mat-dialog-content class="synopsis-dialog-content">
-        <b>Bio: </b>{{ data.bio }}
+        {{ data.bio }}
+        <br/>
+        <br/>
     </mat-dialog-content>
     <mat-dialog-content class="synopsis-dialog-content">
         <img src={{data.portrait}} />
-    </mat-dialog-content>
+   
     <mat-card-actions class="synopsis-actions">
-        <button class="synopsis-close-button" mat-stroked-button aria-label="Close the synopsis button" mat-dialog-close color="primary">
+        <button class="synopsis-close-button" mat-stroked-button  aria-label="Close the synopsis button" mat-dialog-close color="primary">
             X
         </button>
-    </mat-card-actions>
+    </mat-card-actions> </mat-dialog-content>
 </mat-card>

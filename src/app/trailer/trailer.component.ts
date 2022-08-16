@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-trailer',
@@ -7,6 +8,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./trailer.component.scss']
 })
 export class TrailerComponent implements OnInit {
+
+  safeUrl: any;
 
   constructor(
     /**
@@ -18,8 +21,14 @@ export class TrailerComponent implements OnInit {
     public data: {
       title: string;
       trailerUrl: string;
-    }
-  ) {}
+     
+    },
+    private _sanitizer: DomSanitizer
+  ) {
+    
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl('trailerUrl');
+  }
 }
