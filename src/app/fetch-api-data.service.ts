@@ -125,7 +125,6 @@ getGenres(): Observable<any> {
       );
   }
   
-
   // API call to add a favorite movie to user endpoint
   addFavoriteMovie( movieId: any): Observable<any> {
     const username = localStorage.getItem('user');
@@ -145,8 +144,9 @@ getGenres(): Observable<any> {
   // API call to delete a movie from the users favorites list
   removeFavoriteMovie(movieID: any): Observable<any> {
     const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     return this.http
-      .delete(apiUrl + `users/${username}/movies/${movieID}`, {
+      .delete(apiUrl + `users/${username}/${movieID}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -159,7 +159,9 @@ getGenres(): Observable<any> {
 
   // API call to edit user information endpoint
 editUser(updateDetails: any): Observable<any> {
-   
+  const username = localStorage.getItem('user');
+  const token = localStorage.getItem('token');
+  console.log(updateDetails)
     return this.http
       .put(apiUrl + `users/${username}`, updateDetails, {
         headers: new HttpHeaders({
@@ -174,7 +176,8 @@ editUser(updateDetails: any): Observable<any> {
 
   // API call to delete user endpoint
   deleteUser(): Observable<any> {
-    
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     return this.http
       .delete(apiUrl + `users/${username}`, {
         headers: new HttpHeaders({

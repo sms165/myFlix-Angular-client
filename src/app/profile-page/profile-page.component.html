@@ -9,6 +9,7 @@
         <!-- View Profile Information -->
         <mat-card-content class="user-profile-card-content">
             <p><b>Username:</b> {{user.userName}}</p>
+            <p><b>Name:</b> {{user.name}}</p>
             <p><b>Email:</b> {{user.email}}</p>
             <p><b>Birthday:</b> {{user.birthday | date }}</p>
         </mat-card-content>
@@ -20,6 +21,9 @@
         <mat-icon>edit</mat-icon>
         Edit Profile
       </button>
+      <br/>
+      <br/>
+      <br/>
             <button mat-raised-button (click)="deleteProfile()" color="warn">
         <mat-icon>delete_forever</mat-icon>
         Delete Profile

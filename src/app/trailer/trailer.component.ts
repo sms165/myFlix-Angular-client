@@ -29,6 +29,6 @@ export class TrailerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl('trailerUrl');
+    this.safeUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.data.trailerUrl);
   }
 }

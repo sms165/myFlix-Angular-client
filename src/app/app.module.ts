@@ -32,6 +32,8 @@ import { ActorsComponent } from './actors/actors.component';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { FwdDirective } from './fwd.directive';
+import { BackDirective } from './back.directive';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -46,7 +48,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent, 
     UserRegistrationFormComponent, 
-    LoginFormComponent, MovieCardComponent, WelcomePageComponent, ProfilePageComponent, NavbarComponent, GenreComponent, EditProfileComponent,  SynopsisComponent, DirectorComponent, TrailerComponent, ActorsComponent
+    LoginFormComponent, MovieCardComponent, WelcomePageComponent, ProfilePageComponent, NavbarComponent, GenreComponent, EditProfileComponent,  SynopsisComponent, DirectorComponent, TrailerComponent, ActorsComponent, FwdDirective, BackDirective
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

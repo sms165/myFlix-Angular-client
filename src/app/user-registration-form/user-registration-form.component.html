@@ -15,6 +15,16 @@
           >
           </mat-form-field>
           <mat-form-field>
+            <input
+              matInput
+              [(ngModel)]="userData.name"
+              placeholder="Name"
+              type="text"
+              name="name"
+              required
+            >
+            </mat-form-field>
+          <mat-form-field>
           <input
             matInput
             [(ngModel)]="userData.password"

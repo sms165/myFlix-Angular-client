@@ -31,7 +31,7 @@ export class EditProfileComponent implements OnInit {
         duration: 2000,
       });
       // Log out user if they update Username or Password to avoid errors
-      if (this.userData.userName || this.userData.password) {
+      if (this.userData.password) {
         localStorage.clear();
         this.router.navigate(['welcome']);
         this.snackBar.open(

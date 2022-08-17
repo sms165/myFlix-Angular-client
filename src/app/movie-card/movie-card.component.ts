@@ -21,6 +21,8 @@ export class MovieCardComponent {
   genres: any[] = [];
   actors: any[] = [];
   favoriteMovies: any[] = [];
+  users: any[] = [];
+  faves: any[] =[];
 
 
   constructor(public fetchApiData: FetchApiDataService,  public snackBar: MatSnackBar, public dialog: MatDialog) { }
@@ -28,6 +30,7 @@ export class MovieCardComponent {
 ngOnInit(): void {
   this.getMovies();
   this.getGenres();
+  this.getFavoriteMovies();
 }
 
 getMovies(): void {
@@ -122,8 +125,20 @@ getMovies(): void {
     });
   }
 
-  isFav(id: any): boolean {
+  getFavoriteMovies(): void {
+    this.fetchApiData.getUser().subscribe((resp: any) => {
+      this.users = resp;
+      this.favoriteMovies= resp.favorites
+      
+      console.log(this.favoriteMovies);
+      return this.favoriteMovies;
+    });
+  }
+
+  isFav(id: string): boolean{
+  // var fmov= (this.favoriteMovies.favorites)
     return this.favoriteMovies.includes(id);
+  ;
   }
 
   addToFavoriteMovies(id: string): void {

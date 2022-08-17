@@ -1,6 +1,17 @@
 <app-navbar></app-navbar>
+<div class="container">
+    
 <div class="movie-view" style="display: flex">
-    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+    <div class="btn">
+        <button mat-fab color="primary" class="slide-btn-back" appBack>
+            <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+        <button mat-fab color="primary" class="slide-btn-fwd" appFwd>
+            <mat-icon>arrow_forward_ios</mat-icon>
+        </button>
+    </div>
+    
+    <mat-card *ngFor="let movie of movies; let i=index" style="flex: 1 1 auto;">
         <mat-card-header>
         <mat-card-title>{{movie.title}}</mat-card-title>
     </mat-card-header>
@@ -61,12 +72,24 @@
            
             <!-- Render add to or remove from favorites button depending on isFav -->
             <button mat-button *ngIf="!isFav(movie._id)" (click)="addToFavoriteMovies(movie._id)" >
-                <mat-icon>favorite_border</mat-icon>
+                <mat-icon>star_border</mat-icon>
             </button>
             <button mat-button *ngIf="isFav(movie._id)" (click)="removeFromFavoriteMovies(movie._id)" >
-                <mat-icon>favorite</mat-icon>
+                <mat-icon>star</mat-icon>
             </button>
             </mat-card-subtitle>
-        </mat-card-actions>
-    </mat-card>
+        </mat-card-actions> 
+       
+    </mat-card> 
+
+    <!-- <div class="btn">
+        <button mat-fab color="primary" class="slide-btn-back">
+            <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+        <button mat-fab color="primary" class="slide-btn-fwd">
+            <mat-icon>arrow_forward_ios</mat-icon>
+        </button>
+    </div> -->
 </div>
+</div>
+   

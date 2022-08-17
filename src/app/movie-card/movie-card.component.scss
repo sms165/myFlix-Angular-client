@@ -2,12 +2,14 @@
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 .movieImage{
-    height:55vh
+    height:65vh
 }
 
 
 .movie-view {
-    
+    overflow: hidden;
+    // padding: 0 10vw;
+    padding-left: 1vw;
     // display: flex;
     // flex-direction: row;
     // flex-wrap: wrap;
@@ -24,9 +26,9 @@
   
     // display: flex;
     // flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    // justify-content: center;
+    // align-items: center;
+    //position: relative;
     // box-shadow: 10px 5px 5px green;
     background-color: #122535;
     margin: 1vw;
@@ -43,4 +45,22 @@ button{
 
 button:hover{
     color: #F90606;
+}
+
+.btn{
+    position: absolute;
+    z-index: 1;
+}
+
+.slide-btn-back{
+    position:fixed;
+    left: 0;
+    top: 50vh;
+}
+
+
+.slide-btn-fwd{
+    position:fixed;
+    right: 0;
+    top: 50vh;
 }
