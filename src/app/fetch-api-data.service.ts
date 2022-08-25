@@ -36,7 +36,8 @@ export class FetchApiDataService {
 
   //API call to get all movies endpoint
   getAllMovies(): Observable<any> {
-    
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + 'movies', {
         headers: new HttpHeaders({
@@ -113,6 +114,7 @@ getGenres(): Observable<any> {
   // API call to get favortie movies of a user endpoint
   getUser(): Observable<any> {
     const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + 'users/' + username, {
         headers: new HttpHeaders({
