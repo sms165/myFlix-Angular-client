@@ -124,9 +124,9 @@ const username = localStorage.getItem('username');
 // Get username from localStorage for URLs
 const username = localStorage.getItem('username');
     return this.http
-      .get(apiUrl + `users/${username}`, {
+      .get(apiUrl + 'users/' + username, {
         headers: new HttpHeaders({
-          Authorization: `Bearer ${token}`,
+          Authorization: 'Bearer ' + token,
         })
       })
       .pipe(

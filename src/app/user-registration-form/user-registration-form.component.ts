@@ -26,11 +26,7 @@ constructor(
 
 ngOnInit(): void {
 }
-  /**
-   * Registers a user using API service
-   * When succesful,
-   * @function registerUser
-   */
+
 // This is the function responsible for sending the form inputs to the backend
 registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
