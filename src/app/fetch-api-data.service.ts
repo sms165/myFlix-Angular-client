@@ -6,7 +6,9 @@ import { map } from 'rxjs/operators';
 
 const apiUrl = 'https://my-flix-careerfoundry.herokuapp.com/';
 
-
+const token = localStorage.getItem('token');
+// Get username from localStorage for URLs
+const username = localStorage.getItem('username');
 
 @Injectable({
   providedIn: 'root'
@@ -34,9 +36,7 @@ export class FetchApiDataService {
 
   //API call to get all movies endpoint
   getAllMovies(): Observable<any> {
-    const token = localStorage.getItem('token');
-// Get username from localStorage for URLs
-const username = localStorage.getItem('username');
+    
     return this.http
       .get(apiUrl + 'movies', {
         headers: new HttpHeaders({
@@ -48,9 +48,7 @@ const username = localStorage.getItem('username');
 
   //  API call to get one movie endpoint
   getSingleMovie(title: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    // Get username from localStorage for URLs
-    const username = localStorage.getItem('username');
+   
     return this.http
       .get(apiUrl + `movies/${title}`, {
         headers: new HttpHeaders({
@@ -65,9 +63,7 @@ const username = localStorage.getItem('username');
 
   // API call to get data on one director
   getDirector(name: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    // Get username from localStorage for URLs
-    const username = localStorage.getItem('username');
+   
     return this.http
       .get(apiUrl + `movies/director/${name}`, {
         headers: new HttpHeaders({
@@ -84,9 +80,7 @@ const username = localStorage.getItem('username');
   // API call to genre endpoint
 // Get Genre
 getActors(): Observable<any> {
-  const token = localStorage.getItem('token');
-// Get username from localStorage for URLs
-const username = localStorage.getItem('username');
+  
   return this.http
     .get( apiUrl + 'actor', {
       headers: new HttpHeaders({
@@ -102,9 +96,7 @@ const username = localStorage.getItem('username');
   // API call to genre endpoint
 // Get Genre
 getGenres(): Observable<any> {
-  const token = localStorage.getItem('token');
-// Get username from localStorage for URLs
-const username = localStorage.getItem('username');
+  
   return this.http
     .get( apiUrl + 'genre', {
       headers: new HttpHeaders({
@@ -120,9 +112,7 @@ const username = localStorage.getItem('username');
   // API call to user data endpoint
   // API call to get favortie movies of a user endpoint
   getUser(): Observable<any> {
-    const token = localStorage.getItem('token');
-// Get username from localStorage for URLs
-const username = localStorage.getItem('username');
+    const username = localStorage.getItem('user');
     return this.http
       .get(apiUrl + 'users/' + username, {
         headers: new HttpHeaders({
@@ -213,8 +203,8 @@ editUser(updateDetails: any): Observable<any> {
       );
       console.table(error);
     }
-     return throwError(
-      'Something bad happened; please try again later.'
+    throwError(
+      () => new Error('Something bad happened; please try again later.')
     );
   }
 }
