@@ -33,6 +33,11 @@ ngOnInit(): void {
   this.getFavoriteMovies();
 }
 
+/**
+   * Gets all the movies using API service and populate local state variable
+   * @returns array of movies objects
+   * @function getMovies
+   */
 getMovies(): void {
   this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -40,7 +45,12 @@ getMovies(): void {
       return this.movies;
     });
   }
-  
+
+  /**
+   * Gets all the genres using API service and populate local state variable
+   * @returns array of genres objects
+   * @function getGenres
+   */
   getGenres(): void {
     this.fetchApiData.getGenres().subscribe((resp: any) => {
       this.genres = resp;
@@ -48,20 +58,12 @@ getMovies(): void {
     });
   }
 
-  // openGenreDialog(ids: string[]): void {
-  //   let genresDataArray: any[] = [];
-  //   ids.forEach((genre) => {
-  //     let genresObj = this.genres.find((g) => genre === g._id);
-  //     genresDataArray.push(genresObj);
-  //   });
-  //   this.dialog.open(GenreComponent, {
-  //     data: {
-  //       genresArray: genresDataArray,
-  //     },
-  //     width: '500px',
-  //   });
-  // }
-
+   /**
+    * Opens the genre dialog from GenreComponent
+    * @param name 
+    * @param description 
+    * @function openGenreDialog
+    */
   openGenreDialog(name:string, description:string ): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -74,7 +76,11 @@ getMovies(): void {
     });
   }
 
-
+/**
+   * Gets all the actors using API service and populate local state variable
+   * @returns array of actors objects
+   * @function getActors
+   */
   getActors(): void {
     this.fetchApiData.getActors().subscribe((resp: any) => {
       this.actors = resp;
@@ -82,6 +88,13 @@ getMovies(): void {
     });
   }
 
+  /**
+   * Opens the actor dialg
+   * @param name 
+   * @param bio 
+   * @param portrait 
+   * @function openActorDialog
+   */
   openActorDialog(name:string, bio:string, portrait:string): void {
     this.dialog.open(ActorsComponent, {
       data: {
@@ -94,6 +107,12 @@ getMovies(): void {
     });
   }
 
+  /**
+   * Open trailer dialog
+   * @param title 
+   * @param trailerUrl 
+   * @function openActorDialog
+   */
   openTrailerDialog(title: string, trailerUrl: string): void {
     this.dialog.open(TrailerComponent, {
       data: {
@@ -104,6 +123,12 @@ getMovies(): void {
     });
   }
 
+  /**
+   * Open synopsis dialog
+   * @param title 
+   * @param description 
+   * @function openSynopsisDialog
+   */
   openSynopsisDialog(title: string, description: string): void {
     this.dialog.open(SynopsisComponent, {
       data: {
@@ -114,6 +139,13 @@ getMovies(): void {
     });
   }
 
+  /**
+   * Open director dialog
+   * @param name 
+   * @param bio 
+   * @param portrait 
+   * @function openDirectorDialog
+   */
   openDirectorDialog(name: string, bio: string, portrait:string): void {
     this.dialog.open(DirectorComponent, {
       data: {
@@ -125,6 +157,11 @@ getMovies(): void {
     });
   }
 
+  /**
+   * Gets all the user favorite movies
+   * @returns array of favorite movie ids
+   * @function getFavoriteMovies
+   */
   getFavoriteMovies(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.users = resp;
@@ -135,12 +172,23 @@ getMovies(): void {
     });
   }
 
+  /**
+   * Checks if a movie is included in the user's list of favorite movies
+   * @param id
+   * @returns true if the movie is in the array
+   * @function isFav
+   */
   isFav(id: string): boolean{
   // var fmov= (this.favoriteMovies.favorites)
     return this.favoriteMovies.includes(id);
   ;
   }
 
+  /**
+   * Add movie to favorites
+   * @param id 
+   * @function addToFavoriteMovies
+   */
   addToFavoriteMovies(id: string): void {
     console.log(id);
     this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
@@ -149,6 +197,11 @@ getMovies(): void {
     })
   }
 
+  /**
+   * Remove movie from favorites
+   * @param id 
+   * @function removeFromFavoriteMovie
+   */
   removeFromFavoriteMovies(id: string): void {
     console.log(id);
     this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {

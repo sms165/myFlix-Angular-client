@@ -17,7 +17,12 @@ export class FetchApiDataService {
 
   constructor(private http: HttpClient) { }
 
-  // Making the api call for the user registration endpoint
+  /**
+   * @service POST to an API endpoint to register a new user
+   * @param userDetails 
+   * @returns a new user object in json format
+   * @function userRegistration
+   */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -25,7 +30,12 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  // API call to user login endpoint
+  /**
+   * @service POST to an API endpoint to log a user in
+   * @param userCredentials 
+   * @returns user data in json format
+   * @function userLogin
+   */
   public userLogin(userCredentials: any): Observable<any> {
     console.log(userCredentials);
     return this.http
@@ -34,7 +44,11 @@ export class FetchApiDataService {
   }
 
 
-  //API call to get all movies endpoint
+  /**
+   *  @service GET to an API endpoint to get all movies
+   * @returns array of movies in json format
+   * @function getAllMovies
+   */
   getAllMovies(): Observable<any> {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -47,7 +61,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  //  API call to get one movie endpoint
+  /**
+   * @service GET to an API endpoint to get a specific movie info
+   * @param title 
+   * @returns data of one movie
+   * @function getSingleMovie
+   */
   getSingleMovie(title: any): Observable<any> {
    
     return this.http
@@ -62,7 +81,12 @@ export class FetchApiDataService {
       );
   }
 
-  // API call to get data on one director
+  /**
+   * @service GET to an API endpoint to get a specific director info
+   * @param name 
+   * @returns data of director
+   * @function getDirector
+   */
   getDirector(name: any): Observable<any> {
    
     return this.http
@@ -78,8 +102,11 @@ export class FetchApiDataService {
   }
 
 
-  // API call to genre endpoint
-// Get Genre
+   /**
+   * @service GET to an API  endpoint to get data about actors
+   * @returns an array of actors in json format
+   * @function getActors
+   */
 getActors(): Observable<any> {
   
   return this.http
@@ -94,8 +121,11 @@ getActors(): Observable<any> {
     );
 }
 
-  // API call to genre endpoint
-// Get Genre
+ /**
+   * @service GET to an API  endpoint to get data about genres
+   * @returns an array of genres in json format
+   * @function getGenres
+   */
 getGenres(): Observable<any> {
   
   return this.http
@@ -110,8 +140,11 @@ getGenres(): Observable<any> {
     );
 }
 
-  // API call to user data endpoint
-  // API call to get favortie movies of a user endpoint
+  /**
+   * @service GET to an API endpoint to get data about a specific user
+   * @returns a user in json format
+   * @function getUser
+   */
   getUser(): Observable<any> {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -127,7 +160,12 @@ getGenres(): Observable<any> {
       );
   }
   
-  // API call to add a favorite movie to user endpoint
+  /**
+   * @service PUT to an API endpoint to add a movie to the favourite list array
+   * @param movieId 
+   * @returns a user in json format
+   * @function addFavoriteMovie
+   */
   addFavoriteMovie( movieId: any): Observable<any> {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -143,7 +181,13 @@ getGenres(): Observable<any> {
       );
   }
 
-  // API call to delete a movie from the users favorites list
+ /**
+  * @service DELETE to an API endpoint to remove a movie to the favourite list array
+  * @param movieID 
+  * @returns none
+  * @function removeFavoriteMovie
+  * 
+  */
   removeFavoriteMovie(movieID: any): Observable<any> {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -159,7 +203,12 @@ getGenres(): Observable<any> {
       );
   }
 
-  // API call to edit user information endpoint
+  /**
+   * @service PUT to an API endpoint to update one or multiple data of a user
+   * @param updateDetails 
+   * @returns a user in json format
+   * @function editUser
+   */
 editUser(updateDetails: any): Observable<any> {
   const username = localStorage.getItem('user');
   const token = localStorage.getItem('token');
@@ -176,7 +225,11 @@ editUser(updateDetails: any): Observable<any> {
       );
   }
 
-  // API call to delete user endpoint
+  /**
+   * @service DELETE to an API endpoint to remove a user
+   * @returns none
+   * @function deleteUser
+   */
   deleteUser(): Observable<any> {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
