@@ -33,7 +33,11 @@ constructor(
 
 ngOnInit(): void {
 }
-
+/**
+   * Login function
+   * When successful, route to /movies
+   * @function loginUser
+   */
 // This is the function responsible for sending the form inputs to the backend
 loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {

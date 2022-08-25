@@ -21,7 +21,11 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {}
 
-
+/**
+   * Access the API sending a POST request with the new parameters to update the user profile
+   * If username or password is updated, logout and route to welcome
+   * @function editUser
+   */
   editUser(): void {
     console.log(this.userData);
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
