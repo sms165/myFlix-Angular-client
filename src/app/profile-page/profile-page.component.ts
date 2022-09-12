@@ -51,9 +51,13 @@ export class ProfilePageComponent implements OnInit {
    * @function openEditProfileDialog
    */
   openEditProfileDialog(): void {
+    if(this.user.userName ==="tester"){
+      alert("Sorry profile cannot be updated on tester account")
+    }else{
     this.dialog.open(EditProfileComponent, {
       width: '300px',
     });
+  }
   }
 
   /**
@@ -61,6 +65,9 @@ export class ProfilePageComponent implements OnInit {
    * @function deleteProfile
    */
   deleteProfile(): void {
+    if(this.user.userName == "tester"){
+      alert("Sorry tester account cannot be deleted")
+    }else{
     if (
       confirm(
         'Are you sure you want to delete your account? This cannnot be undone.'
@@ -81,4 +88,5 @@ export class ProfilePageComponent implements OnInit {
       });
     }
   }
+}
 }

@@ -27,6 +27,7 @@ export class EditProfileComponent implements OnInit {
    * @function editUser 
  */
   editUser(): void {
+    
     console.log(this.userData);
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
       this.dialogRef.close();
@@ -48,4 +49,5 @@ export class EditProfileComponent implements OnInit {
       }
     });
   }
+
 }
